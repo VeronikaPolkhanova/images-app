@@ -55,8 +55,18 @@ const Login = () => {
     <Page>
       <h1>Login</h1>
       <AuthContainer>
-        <Input label="email" value={email} onChange={onChangeEmail} />
-        <Input label="password" value={password} onChange={onChangePassword} />
+        <Input
+          label="email"
+          value={email}
+          rows={null}
+          onChange={onChangeEmail}
+        />
+        <Input
+          label="password"
+          value={password}
+          rows={null}
+          onChange={onChangePassword}
+        />
         <Button label="Submit" onAction={onSubmit} />
         {!response?.token && isSuccess && <Error>User not found</Error>}
         {response?.token && <Success>Welcome</Success>}

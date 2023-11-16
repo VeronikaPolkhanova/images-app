@@ -1,27 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-interface IImage {
-  id: number;
-  url: string;
-  title: string;
-}
-
-interface ImagesGridProp {
-  images: [IImage];
-}
+import { ImagesGridProps } from "../types";
 
 const StyledGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 5px;
+  column-count: 3;
+  column-gap: 20px;
+  text-align: justify;
 `;
 
-const ImagesGrid = (props: ImagesGridProp) => {
+const GridItem = styled.li`
+  list-style: none;
+  width: 100%;
+  margin-bottom: 20px;
+  overflow: hidden;
+`;
+
+const ImagesGrid = (props: ImagesGridProps) => {
   return (
     <StyledGrid>
-      {props.images.map(({ url, title }) => (
-        <img src={url} alt={title} />
+      {props.images.map(({ id, url, title }) => (
+        <Link key={id} to={`/${id}`}>
+          <GridItem>
+            <img src={url} alt={title} />
+          </GridItem>
+        </Link>
       ))}
     </StyledGrid>
   );

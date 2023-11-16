@@ -9,7 +9,6 @@ export const api = createApi({
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
       }
-
       return headers;
     },
     method: "GET",

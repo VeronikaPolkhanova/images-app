@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-interface ButtonProp {
-  label: string;
-  onAction: () => void;
-}
+import { ButtonProps } from "../types";
 
 const StyledButton = styled.button`
   width: 100px;
@@ -14,7 +11,7 @@ const StyledButton = styled.button`
   cursor: pointer;
 `;
 
-const Button = (props: ButtonProp) => {
+const Button = (props: ButtonProps) => {
   return <StyledButton onClick={props.onAction}>{props.label}</StyledButton>;
 };
 

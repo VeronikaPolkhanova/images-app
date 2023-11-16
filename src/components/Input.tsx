@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
+import { InputProp } from "../types";
+
 const Field = styled.input`
   border: 1px solid blue;
+  padding: 10px;
 `;
 
 const Label = styled.label`
@@ -12,12 +15,6 @@ const Label = styled.label`
 
   color: blue;
 `;
-
-interface InputProp {
-  label: string;
-  value: string;
-  onChange: (e: any) => void;
-}
 
 const Input = (prop: InputProp) => {
   return (
