@@ -1,15 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import Page from "../components/Page";
 import Input from "../components/Input";
 import Button from "../components/Button";
-
-const Page = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-`;
 
 const AuthContainer = styled.div`
   min-width: 300px;
