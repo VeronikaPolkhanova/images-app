@@ -9,7 +9,13 @@ const photos = [
     id: 1,
     title: "Super Cat",
     url: "https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D",
-    comments: [],
+    comments: [
+      {
+        id: 1,
+        text: "Very crazy!",
+        userId: 1,
+      },
+    ],
   },
   {
     id: 2,

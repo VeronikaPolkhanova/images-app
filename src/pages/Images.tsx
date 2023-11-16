@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import ImagesGrid from "../components/ImagesGrid";
 import Page from "../components/Page";
@@ -11,9 +12,13 @@ function Images() {
     data: images,
     isLoading,
     error: errorMessage,
-  } = api.useFetchAllImagesQuery({});
+  } = api.useFetchImagesQuery({});
+
+  const navigate = useNavigate();
+  const goTo = useCallback((url: string) => navigate(url), [navigate]);
 
   if (errorMessage) {
+    goTo("/login");
     return <Error>Something went wrong</Error>;
   }
 

@@ -1,9 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-import { InputProp } from "../types";
+import { InputProps } from "../types";
 
 const Field = styled.input`
+  border: 1px solid blue;
+  padding: 10px;
+`;
+
+const TextArea = styled.textarea`
   border: 1px solid blue;
   padding: 10px;
 `;
@@ -16,11 +21,20 @@ const Label = styled.label`
   color: blue;
 `;
 
-const Input = (prop: InputProp) => {
+const Input = (props: InputProps) => {
   return (
     <Label>
-      {prop.label}
-      <Field value={prop.value} onChange={prop.onChange} />
+      {props.label}
+      {props.rows ? (
+        <TextArea
+          rows={props.rows}
+          cols={50}
+          value={props.value}
+          onChange={props.onChange}
+        />
+      ) : (
+        <Field value={props.value} onChange={props.onChange} />
+      )}
     </Label>
   );
 };

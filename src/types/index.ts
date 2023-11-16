@@ -16,6 +16,7 @@ export interface ImagesGridProps {
 
 export interface ButtonProps {
   label: string;
+  type: string;
   onAction: () => void;
 }
 
@@ -24,4 +25,8 @@ export interface InputProps {
   value: string;
   rows: number | null;
   onChange: (e: any) => void;
+}
+
+export interface IJwtPayload {
+  id: string;
 }

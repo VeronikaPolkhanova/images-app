@@ -11,21 +11,36 @@ export const api = createApi({
       }
       return headers;
     },
-    method: "GET",
   }),
 
   endpoints: (build) => ({
-    fetchAllImages: build.query({
-      query: () => ({
-        url: "/photos",
-      }),
-    }),
-
     authUser: build.mutation({
       query: ({ email, password }) => ({
         url: "/auth",
         method: "POST",
         body: { email, password },
+      }),
+    }),
+
+    fetchImages: build.query({
+      query: () => ({
+        url: "/photos",
+        method: "GET",
+      }),
+    }),
+
+    postComment: build.mutation({
+      query: ({ id, text, userId }) => ({
+        url: `/photos/${id}/comments`,
+        method: "POST",
+        body: { text, userId },
+      }),
+    }),
+
+    deleteComment: build.mutation({
+      query: ({ id, commentId }) => ({
+        url: `/photos/${id}/comments/${commentId}`,
+        method: "DELETE",
       }),
     }),
   }),

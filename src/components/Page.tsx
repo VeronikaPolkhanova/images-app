@@ -5,6 +5,7 @@ const Page = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  padding-top: 70px;
 `;
 
 export default Page;

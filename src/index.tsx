@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from "./app/store";
-import { Provider } from "react-redux";
 
 import Images from "./pages/Images";
 import Login from "./pages/Login";
-import Image from "./pages/Image";
+import Post from "./pages/Post";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/:id",
-    element: <Image />,
+    element: <Post />,
   },
   {
     path: "/",
