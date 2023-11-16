@@ -6,15 +6,20 @@ import { Provider } from "react-redux";
 
 import Images from "./pages/Images";
 import Login from "./pages/Login";
+import Image from "./pages/Image";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Images />,
-  },
-  {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/:id",
+    element: <Image />,
+  },
+  {
+    path: "/",
+    element: <Images />,
   },
 ]);
 

@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { fetchImages } from "../api/apiSlice";
+import { api } from "../api/apiSlice";
 
 export const store = configureStore({
   reducer: {
-    [fetchImages.reducerPath]: fetchImages.reducer,
+    [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(fetchImages.middleware),
+    getDefaultMiddleware().concat(api.middleware),
 });
 
 setupListeners(store.dispatch);
