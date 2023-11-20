@@ -48,12 +48,20 @@ const Post = () => {
     setComment(e.target.value);
   };
 
+  const [errMessage, setErrorMessage] = useState("");
+
   const currentImage = images?.data.find(
     (item: IImage) => item.id.toString() === id
   );
-  const currentUserId = localStorage.getItem("userId");
+  const currentUserId: string | null = localStorage.getItem("userId");
 
   const onSubmit = () => {
+    if (comment.length === 0) {
+      setErrorMessage("The field must not be empty");
+      return;
+    }
+    setErrorMessage("");
+    setComment("");
     postComment({ id, text: comment, userId: currentUserId });
   };
 
@@ -83,7 +91,7 @@ const Post = () => {
               <p>
                 <span>user {comment.userId}:</span> {comment.text}
               </p>
-              {currentUserId == comment.userId && (
+              {Number(currentUserId) === comment.userId && (
                 <Button
                   label="Delete"
                   type="delete"
@@ -96,13 +104,12 @@ const Post = () => {
             label="Tap your comment"
             value={comment}
             rows={4}
+            errMessage={errMessage}
             onChange={onChangeComment}
           />
           <Button label="Sent" type="submit" onAction={onSubmit} />
-          {(responsePost && isSuccessPost) ||
-          (responseDelete && isSuccessDelete) ? (
-            <Success>Success!</Success>
-          ) : null}
+          {((responsePost && isSuccessPost) ||
+            (responseDelete && isSuccessDelete)) && <Success>Success!</Success>}
         </CommentSection>
       </Container>
     </Page>

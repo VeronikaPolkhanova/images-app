@@ -23,6 +23,7 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errMessage, setErrorMessage] = useState("");
 
   const onChangeEmail = (e: any) => {
     setEmail(e.target.value);
@@ -33,6 +34,11 @@ const Login = () => {
   };
 
   const onSubmit = () => {
+    if (email.length === 0 || password.length === 0) {
+      setErrorMessage("The field must not be empty");
+      return;
+    }
+    setErrorMessage("");
     auth({ email, password });
   };
 
@@ -43,7 +49,6 @@ const Login = () => {
     if (response?.token) {
       const token = response?.token;
       const decoded = jwtDecode(token) as IJwtPayload;
-
       localStorage.setItem("token", token);
       localStorage.setItem("userId", decoded.id);
     }
@@ -51,7 +56,6 @@ const Login = () => {
 
   useEffect(() => {
     const isUserAuth = localStorage.getItem("token");
-
     if (isUserAuth) {
       goTo("/");
     }
@@ -65,12 +69,14 @@ const Login = () => {
           label="email"
           value={email}
           rows={null}
+          errMessage={email.length === 0 ? errMessage : ""}
           onChange={onChangeEmail}
         />
         <Input
           label="password"
           value={password}
           rows={null}
+          errMessage={password.length === 0 ? errMessage : ""}
           onChange={onChangePassword}
         />
         <Button label="Submit" type="submit" onAction={onSubmit} />

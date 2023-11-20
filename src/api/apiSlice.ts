@@ -13,6 +13,8 @@ export const api = createApi({
     },
   }),
 
+  tagTypes: ["Images"],
+
   endpoints: (build) => ({
     authUser: build.mutation({
       query: ({ email, password }) => ({
@@ -27,6 +29,7 @@ export const api = createApi({
         url: "/photos",
         method: "GET",
       }),
+      providesTags: ["Images"],
     }),
 
     postComment: build.mutation({
@@ -35,6 +38,7 @@ export const api = createApi({
         method: "POST",
         body: { text, userId },
       }),
+      invalidatesTags: ["Images"],
     }),
 
     deleteComment: build.mutation({
@@ -42,6 +46,7 @@ export const api = createApi({
         url: `/photos/${id}/comments/${commentId}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["Images"],
     }),
   }),
 });

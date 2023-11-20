@@ -1,7 +1,7 @@
 export interface IComment {
   id: number;
   text: string;
-  userId: string;
+  userId: number;
 }
 export interface IImage {
   id: number;
@@ -24,6 +24,7 @@ export interface InputProps {
   label: string;
   value: string;
   rows: number | null;
+  errMessage: string;
   onChange: (e: any) => void;
 }
 
