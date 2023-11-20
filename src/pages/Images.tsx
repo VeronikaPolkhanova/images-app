@@ -7,7 +7,7 @@ import { Error } from "../components/Messages";
 
 import { api } from "../api/apiSlice";
 
-function Images() {
+const Images = () => {
   const {
     data: images,
     isLoading,
@@ -25,6 +25,6 @@ function Images() {
   return (
     <Page>{isLoading ? "Loading" : <ImagesGrid images={images?.data} />}</Page>
   );
-}
+};
 
 export default Images;
